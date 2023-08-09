@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <div class="modules">
+        {% for module in modules %}
+            <div class="module">
+                <span>{{ module.intitule }}</span>
+				<span> - </span>
+                <span>{{ module.formateur }}</span>
+					<span class="star-rating">
+		<label for="rate-1" style="--i:1"><i class="fa-solid fa-star {{ (module.note >= 1) ? 'jaune' : '' }}"></i></label>
+		<input type="radio" name="rating" id="rate-1" value="1">
+		<label for="rate-2" style="--i:2"><i class="fa-solid fa-star {{ (module.note >= 2) ? 'jaune' : '' }}"></i></label>
+		<input type="radio" name="rating" id="rate-2" value="2" checked>
+		<label for="rate-3" style="--i:3"><i class="fa-solid fa-star {{ (module.note >= 3) ? 'jaune' : '' }}"></i></label>
+		<input type="radio" name="rating" id="rate-3" value="3">
+		<label for="rate-4" style="--i:4"><i class="fa-solid fa-star {{ (module.note >= 4) ? 'jaune' : '' }}"></i></label>
+		<input type="radio" name="rating" id="rate-4" value="4">
+		<label for="rate-5" style="--i:5"><i class="fa-solid fa-star {{ (module.note >= 5) ? 'jaune' : '' }}"></i></label>
+		<input type="radio" name="rating" id="rate-5" value="5">
+	</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
