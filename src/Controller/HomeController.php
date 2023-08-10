@@ -22,6 +22,21 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', compact('modules'));
     }
 
+    #[Route('/modif_etoile/{module}/{etoile}', name: 'home_modif_etoile')]
+    public function modif_etoile(
+        Module $module,
+        int $etoile,
+        EntityManagerInterface $entityManager
+    ): Response
+    {
+       if ($module->getNote() != $etoile) {
+           $module->setNote($etoile);
+           $entityManager->persist($module);
+           $entityManager->flush();
+       }
+       return $this->redirectToRoute('home_index');
+    }
+
     #[Route('/ajout_module', name: 'home_ajout_module')]
     public function ajout_module(
         EntityManagerInterface $entityManager,
